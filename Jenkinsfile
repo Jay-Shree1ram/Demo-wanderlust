@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building application...'
-                sh ' sudo docker-compose up --build -d'
+                sh ' docker-compose up --build -d'
             }
         }
 
