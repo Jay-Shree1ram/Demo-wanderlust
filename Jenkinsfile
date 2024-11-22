@@ -16,15 +16,16 @@ pipeline {
             }
         }
 
-        stage('Image Push') {
-            steps {
-                echo 'Running tests...'
-                // Run tests for the application
-                sh ''' docker push kajirocks/wanderlust-be-prod
-                 docker push kajirocks/wanderlust-fe-prod
-            ''' 
-            }
-        }
+    stage('Image Push') {
+    steps {
+        echo 'Pushing Docker images...'
+        sh '''
+        docker push kajirocks/wanderlust-be-prod
+        docker push kajirocks/wanderlust-fe-prod
+        '''
+    }
+}
+
       stage('Deployment') {
             steps {
                 echo 'Application deployed...'
