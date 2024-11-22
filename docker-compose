@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  db:
+    image: kajirocks/mongo:latest
+    container_name: mongo_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build:
+      context: ./backend
+    image: kajirocks/wanderlust-be-prod
+    container_name: backend-wanderlust
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+    image: kajirocks/wanderlust-fe-prod
+    container_name: frontend-wanderlust
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:
+
