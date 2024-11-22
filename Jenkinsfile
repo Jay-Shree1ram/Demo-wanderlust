@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building application...'
-                sh 'sudo docker-compose up --build -d'
+                sh ' docker-compose up --build -d'
             }
         }
 
@@ -20,8 +20,8 @@ pipeline {
             steps {
                 echo 'Running tests...'
                 // Run tests for the application
-                sh '''sudo docker push kajirocks/wanderlust-be-prod
-                sudo docker push kajirocks/wanderlust-fe-prod
+                sh ''' docker push kajirocks/wanderlust-be-prod
+                 docker push kajirocks/wanderlust-fe-prod
             ''' 
             }
         }
