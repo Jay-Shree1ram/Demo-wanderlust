@@ -25,11 +25,13 @@ pipeline {
             ''' 
             }
         }
-        stage('Deployment') {
-                            echo ' Application Deployed...'
-
-
-    }
+      stage('Deployment') {
+            steps {
+                echo 'Application deployed...'
+               
+            }
+        }
+    
 
 
 }
